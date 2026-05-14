@@ -199,34 +199,79 @@ button { cursor: none; font-family: var(--font-body); border: none; background: 
   gap: 60px; align-items: center;
 }
 @media (max-width: 900px) {
+  /* Hero layout: kolom tunggal, foto di atas */
   .hero-inner {
     grid-template-columns: 1fr;
     justify-items: center;
     text-align: center;
+    gap: 32px;
   }
   .hero-visual {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: block;
     width: 100%;
-    max-width: 340px;
+    max-width: 320px;
+    height: auto;
     aspect-ratio: auto;
-    height: 420px;
     margin: 0 auto;
-    order: -1; /* foto di atas teks */
+    order: -1;
   }
+
+  /* Foto lebih kecil & terpusat */
+  .profile-photo-wrap { position: relative; top: auto; left: auto; transform: none; margin: 0 auto; }
+  .profile-photo-frame { width: 180px; height: 240px; margin: 0 auto; }
+
+  /* Sembunyikan floating cards absolut — digantikan mobile-cards di bawah */
+  .card-top, .card-bottom { display: none; }
+
+  /* Ring mengikuti foto lebih kecil */
+  .r1 { width: 196px; height: 261px; border-radius: 26px; }
+  .r2 { width: 230px; height: 307px; border-radius: 30px; }
+  .r3 { display: none; }
+
+  /* Sembunyikan dekorasi agar bersih */
+  .corner, .visual-vline, .visual-ring { display: none; }
+
+  /* Teks hero center */
   .available-badge { margin: 0 auto; }
   .hero-cta { justify-content: center; }
   .hero-desc { margin-left: auto; margin-right: auto; }
-  /* Sembunyikan floating cards di mobile agar tidak overflow */
-  .card-top, .card-bottom { display: none; }
-  /* Perkecil foto di mobile */
-  .profile-photo-frame { width: 200px; height: 267px; }
-  .r1 { width: 216px; height: 288px; }
-  .r2 { width: 254px; height: 338px; }
-  .r3 { width: 292px; height: 389px; }
-  /* Sembunyikan corner & vline agar bersih */
-  .corner, .visual-vline, .visual-ring { display: none; }
+}
+
+/* Badge info mobile — tampil di bawah foto, menggantikan floating cards */
+.mobile-info-cards {
+  display: none;
+}
+@media (max-width: 900px) {
+  .mobile-info-cards {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+  .mobile-badge {
+    display: flex; align-items: center; gap: 8px;
+    background: rgba(20, 28, 30, 0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(0,229,255,0.2);
+    border-radius: var(--radius-pill);
+    padding: 8px 14px;
+  }
+  .mobile-badge .material-symbols-outlined {
+    font-size: 15px; color: var(--primary);
+  }
+  .mobile-badge-text {
+    display: flex; flex-direction: column; gap: 1px;
+  }
+  .mobile-badge-label {
+    font-family: var(--font-mono); font-size: 7px;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--primary); opacity: 0.7;
+  }
+  .mobile-badge-value {
+    font-family: var(--font-mono); font-size: 10px;
+    font-weight: 700; color: #fff; text-transform: uppercase;
+  }
 }
 
 .available-badge {
@@ -892,3 +937,63 @@ button { cursor: none; font-family: var(--font-body); border: none; background: 
    SELECTION
    ============================================= */
 ::selection { background: rgba(0,229,255,0.2); color: var(--primary); }
+
+/* =============================================
+   MOBILE GLOBAL FIXES (max 480px)
+   ============================================= */
+@media (max-width: 480px) {
+
+  /* Section padding lebih kecil */
+  .section { padding: 72px 0; }
+  .hero { padding-top: 90px; padding-bottom: 48px; }
+
+  /* Hero headline lebih kecil agar tidak overflow */
+  .hero-headline { font-size: 36px; }
+  .hero-desc { font-size: 15px; }
+
+  /* Tombol CTA full width */
+  .hero-cta { flex-direction: column; align-items: center; }
+  .btn-primary, .btn-ghost { width: 100%; justify-content: center; }
+
+  /* Section heading */
+  .section-heading { font-size: 26px; }
+
+  /* About stats: 2 kolom tetap tapi lebih rapat */
+  .stat-card { padding: 20px 16px; }
+  .stat-number { font-size: 36px; }
+
+  /* Skills: 1 kolom */
+  .skills-grid { grid-template-columns: 1fr; gap: 16px; }
+  .skill-card { padding: 24px 20px; }
+
+  /* Cert cards: stack */
+  .cert-grid { grid-template-columns: 1fr; }
+  .cert-card { flex-direction: row; align-items: flex-start; gap: 14px; }
+
+  /* Projects: 1 kolom */
+  .projects-grid { grid-template-columns: 1fr; }
+  .project-img-wrap { height: 200px; }
+  .project-body { padding: 20px; }
+
+  /* Contact card padding */
+  .contact-card { padding: 28px 20px; border-radius: 24px; }
+  .contact-inner { gap: 28px; }
+
+  /* Form row: stack */
+  .form-row { grid-template-columns: 1fr; }
+
+  /* Awards */
+  .awards-grid { grid-template-columns: 1fr; gap: 28px; }
+  .award-item { padding: 16px 14px; }
+
+  /* Footer */
+  .footer-inner { flex-direction: column; align-items: center; text-align: center; }
+  .footer-links { gap: 20px; }
+
+  /* Scroll indicator sembunyikan di mobile */
+  .scroll-indicator { display: none; }
+
+  /* Navbar pill lebar penuh */
+  .nav-wrapper { padding: 0 12px; }
+  .pill-nav { padding: 10px 14px; }
+}
