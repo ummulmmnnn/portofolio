@@ -215,20 +215,21 @@ button { cursor: none; font-family: var(--font-body); border: none; background: 
     order: -1;
     width: 100%;
     max-width: 280px;
-    height: 380px;
+    height: 320px;
     margin: 0 auto;
-    overflow: visible !important;
+    overflow: hidden !important;
   }
   .profile-photo-wrap {
     position: relative; top: auto; left: auto;
-    transform: none; margin: 0 auto;
+    transform: none; margin: 40px auto 0;
   }
   .profile-photo-frame { width: 190px; height: 253px; margin: 0 auto; }
   .r1 { width: 206px; height: 274px; border-radius: 26px; }
   .r2 { width: 242px; height: 322px; border-radius: 30px; }
-  .r3 { display: none; }
-  .card-top, .card-bottom { display: none; }
-  .corner, .visual-vline, .visual-ring { display: none; }
+  .r3 { display: none !important; }
+  .card-top  { display: none !important; }
+  .card-bottom { display: none !important; }
+  .corner, .visual-vline, .visual-ring { display: none !important; }
   .available-badge { margin: 0 auto; }
   .hero-cta { justify-content: center; }
   .hero-desc { margin-left: auto; margin-right: auto; }
@@ -240,8 +241,9 @@ button { cursor: none; font-family: var(--font-body); border: none; background: 
   gap: 10px;
   justify-content: center;
   flex-wrap: wrap;
-  padding: 0 20px 8px;
+  padding: 0 20px;
   width: 100%;
+  margin-top: -8px;
 }
 @media (max-width: 900px) {
   .mobile-info-cards {
@@ -249,12 +251,12 @@ button { cursor: none; font-family: var(--font-body); border: none; background: 
   }
   .mobile-badge {
     display: flex; align-items: center; gap: 8px;
-    background: rgba(20, 28, 30, 0.9);
+    background: rgba(20, 28, 30, 0.92);
     backdrop-filter: blur(12px);
-    border: 1px solid rgba(0,229,255,0.25);
+    border: 1px solid rgba(0,229,255,0.3);
     border-radius: var(--radius-pill);
     padding: 10px 16px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
   }
   .mobile-badge .material-symbols-outlined {
     font-size: 16px; color: var(--primary); flex-shrink: 0;
