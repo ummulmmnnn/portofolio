@@ -211,20 +211,21 @@ button { cursor: none; font-family: var(--font-body); border: none; background: 
     text-align: center;
     gap: 16px;
   }
-  /* hero-visual tinggi mengikuti konten foto */
+  /* hero-visual: flex column agar badge mengalir di bawah foto */
   .hero-visual {
     order: -1;
     width: 100%;
     max-width: 400px;
-    height: 380px;
+    height: auto !important;
     margin: 0 auto;
     position: relative;
-    overflow: hidden !important;
-    display: flex;
+    overflow: visible !important;
+    display: flex !important;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    gap: 16px;
   }
-  /* foto: lebar hampir penuh layar, rasio 3:4 terjaga */
+  /* foto */
   .profile-photo-wrap {
     position: relative !important;
     top: auto !important; left: auto !important;
@@ -248,8 +249,14 @@ button { cursor: none; font-family: var(--font-body); border: none; background: 
   .r1 { width: 276px !important; height: 368px !important; border-radius: 26px; }
   .r2 { width: 312px !important; height: 416px !important; border-radius: 30px; }
   .r3 { display: none !important; }
-  /* sembunyikan semua elemen yang bocor */
-  .card-top   { display: none !important; }
+  /* badge langsung di bawah foto, bukan absolute */
+  .mobile-info-cards {
+    position: relative !important;
+    display: flex !important;
+    z-index: 10;
+  }
+  /* sembunyikan elemen yang bocor */
+  .card-top    { display: none !important; }
   .card-bottom { display: none !important; }
   .corner, .visual-vline, .visual-ring { display: none !important; }
   /* teks center */
