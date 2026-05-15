@@ -209,76 +209,87 @@ button { cursor: none; font-family: var(--font-body); border: none; background: 
     grid-template-columns: 1fr;
     justify-items: center;
     text-align: center;
-    gap: 16px;
+    gap: 24px;
   }
-  /* hero-visual: flex column agar badge mengalir di bawah foto */
+
+  /* hero-visual: blok penuh, center semua */
   .hero-visual {
     order: -1;
     width: 100%;
-    max-width: 400px;
     height: auto !important;
     margin: 0 auto;
-    position: relative;
+    position: static !important;
     overflow: visible !important;
     display: flex !important;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 20px;
   }
-  /* foto */
+
+  /* Sembunyikan semua elemen dekoratif */
+  .card-top    { display: none !important; }
+  .card-bottom { display: none !important; }
+  .corner, .visual-vline, .visual-ring { display: none !important; }
+  .r3 { display: none !important; }
+
+  /* Foto: center, ukuran proporsional */
   .profile-photo-wrap {
     position: relative !important;
     top: auto !important; left: auto !important;
     transform: none !important;
-    margin: 0 auto;
-    width: 260px;
-    height: 347px;
+    width: 220px !important;
+    height: 293px !important;
+    margin: 0 auto !important;
     z-index: 5;
+    display: block;
   }
   .profile-photo-frame {
-    position: relative;
-    width: 260px !important;
-    height: 347px !important;
-    border-radius: 20px;
-    overflow: hidden;
-    border: 2px solid rgba(0,229,255,0.45);
-    box-shadow: 0 0 40px rgba(0,229,255,0.25);
-    margin: 0 auto;
-  }
-  /* ring mengikuti ukuran foto */
-  .r1 { width: 276px !important; height: 368px !important; border-radius: 26px; }
-  .r2 { width: 312px !important; height: 416px !important; border-radius: 30px; }
-  .r3 { display: none !important; }
-  /* badge langsung di bawah foto, bukan absolute */
-  .mobile-info-cards {
     position: relative !important;
+    width: 220px !important;
+    height: 293px !important;
+    border-radius: 18px !important;
+    overflow: hidden !important;
+    border: 2px solid rgba(0,229,255,0.45) !important;
+    box-shadow: 0 0 40px rgba(0,229,255,0.25) !important;
+  }
+
+  /* Ring mengikuti ukuran foto baru */
+  .r1 { width: 236px !important; height: 314px !important; border-radius: 24px; }
+  .r2 { width: 268px !important; height: 357px !important; border-radius: 28px; }
+
+  /* Badge: tampil di bawah foto, center */
+  .mobile-info-cards {
+    position: static !important;
     display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 16px;
     z-index: 10;
   }
-  /* sembunyikan elemen yang bocor */
-  .card-top    { display: none !important; }
-  .card-bottom { display: none !important; }
-  .corner, .visual-vline, .visual-ring { display: none !important; }
-  /* teks center */
+
+  /* Teks hero: center */
+  .hero-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   .available-badge { margin: 0 auto; }
-  .hero-cta { justify-content: center; }
-  .hero-desc { margin-left: auto; margin-right: auto; }
+  .hero-titles { text-align: center; }
+  .hero-desc { text-align: center; margin-left: auto; margin-right: auto; }
+  .hero-cta { justify-content: center; width: 100%; }
 }
 
-/* Badge info mobile — tampil di bawah foto, menggantikan floating cards */
+/* Badge info mobile — hanya tampil di mobile */
 .mobile-info-cards {
   display: none;
-  gap: 10px;
-  justify-content: center;
-  flex-wrap: wrap;
-  padding: 0 20px;
-  width: 100%;
-  margin-top: -8px;
 }
 @media (max-width: 900px) {
-  .mobile-info-cards {
-    display: flex;
-  }
   .mobile-badge {
     display: flex; align-items: center; gap: 8px;
     background: rgba(20, 28, 30, 0.92);
