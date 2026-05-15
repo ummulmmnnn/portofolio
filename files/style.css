@@ -176,17 +176,18 @@ button { cursor: none; font-family: var(--font-body); border: none; background: 
    ============================================= */
 .hero {
   position: relative; min-height: 100vh;
-  display: flex; align-items: center;
-  padding: 100px 0 60px; overflow: hidden;
+  display: flex; align-items: center; flex-direction: column; justify-content: center;
+  padding: 100px 0 60px;
+  overflow: visible;
 }
 .hero-bg-glow {
   position: absolute; top: -10%; right: -10%;
   width: 70vw; height: 70vw;
   background: radial-gradient(circle, rgba(0,229,255,0.07) 0%, transparent 60%);
-  pointer-events: none;
+  pointer-events: none; z-index: 0;
 }
 .hero-grid-lines {
-  position: absolute; inset: 0; pointer-events: none;
+  position: absolute; inset: 0; pointer-events: none; z-index: 0;
   background-image:
     linear-gradient(rgba(0,229,255,0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0,229,255,0.04) 1px, transparent 1px);
@@ -197,41 +198,37 @@ button { cursor: none; font-family: var(--font-body); border: none; background: 
 .hero-inner {
   display: grid; grid-template-columns: 1fr 1fr;
   gap: 60px; align-items: center;
+  position: relative; z-index: 1; width: 100%;
 }
 @media (max-width: 900px) {
-  /* Hero layout: kolom tunggal, foto di atas */
+  .hero {
+    padding-top: 88px; padding-bottom: 32px;
+    min-height: auto;
+  }
   .hero-inner {
     grid-template-columns: 1fr;
     justify-items: center;
     text-align: center;
-    gap: 32px;
+    gap: 16px;
   }
   .hero-visual {
-    display: block;
-    width: 100%;
-    max-width: 320px;
-    height: auto;
-    aspect-ratio: auto;
-    margin: 0 auto;
     order: -1;
+    width: 100%;
+    max-width: 280px;
+    height: 380px;
+    margin: 0 auto;
+    overflow: visible !important;
   }
-
-  /* Foto lebih kecil & terpusat */
-  .profile-photo-wrap { position: relative; top: auto; left: auto; transform: none; margin: 0 auto; }
-  .profile-photo-frame { width: 180px; height: 240px; margin: 0 auto; }
-
-  /* Sembunyikan floating cards absolut — digantikan mobile-cards di bawah */
-  .card-top, .card-bottom { display: none; }
-
-  /* Ring mengikuti foto lebih kecil */
-  .r1 { width: 196px; height: 261px; border-radius: 26px; }
-  .r2 { width: 230px; height: 307px; border-radius: 30px; }
+  .profile-photo-wrap {
+    position: relative; top: auto; left: auto;
+    transform: none; margin: 0 auto;
+  }
+  .profile-photo-frame { width: 190px; height: 253px; margin: 0 auto; }
+  .r1 { width: 206px; height: 274px; border-radius: 26px; }
+  .r2 { width: 242px; height: 322px; border-radius: 30px; }
   .r3 { display: none; }
-
-  /* Sembunyikan dekorasi agar bersih */
+  .card-top, .card-bottom { display: none; }
   .corner, .visual-vline, .visual-ring { display: none; }
-
-  /* Teks hero center */
   .available-badge { margin: 0 auto; }
   .hero-cta { justify-content: center; }
   .hero-desc { margin-left: auto; margin-right: auto; }
@@ -240,36 +237,38 @@ button { cursor: none; font-family: var(--font-body); border: none; background: 
 /* Badge info mobile — tampil di bawah foto, menggantikan floating cards */
 .mobile-info-cards {
   display: none;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 0 20px 8px;
+  width: 100%;
 }
 @media (max-width: 900px) {
   .mobile-info-cards {
     display: flex;
-    gap: 10px;
-    justify-content: center;
-    margin-top: 16px;
-    flex-wrap: wrap;
   }
   .mobile-badge {
     display: flex; align-items: center; gap: 8px;
-    background: rgba(20, 28, 30, 0.85);
+    background: rgba(20, 28, 30, 0.9);
     backdrop-filter: blur(12px);
-    border: 1px solid rgba(0,229,255,0.2);
+    border: 1px solid rgba(0,229,255,0.25);
     border-radius: var(--radius-pill);
-    padding: 8px 14px;
+    padding: 10px 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
   }
   .mobile-badge .material-symbols-outlined {
-    font-size: 15px; color: var(--primary);
+    font-size: 16px; color: var(--primary); flex-shrink: 0;
   }
   .mobile-badge-text {
-    display: flex; flex-direction: column; gap: 1px;
+    display: flex; flex-direction: column; gap: 2px;
   }
   .mobile-badge-label {
-    font-family: var(--font-mono); font-size: 7px;
-    text-transform: uppercase; letter-spacing: 0.12em;
-    color: var(--primary); opacity: 0.7;
+    font-family: var(--font-mono); font-size: 8px;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--primary); opacity: 0.8;
   }
   .mobile-badge-value {
-    font-family: var(--font-mono); font-size: 10px;
+    font-family: var(--font-mono); font-size: 11px;
     font-weight: 700; color: #fff; text-transform: uppercase;
   }
 }
@@ -536,7 +535,8 @@ button { cursor: none; font-family: var(--font-body); border: none; background: 
 .section-heading {
   font-family: var(--font-display); font-size: clamp(28px, 4vw, 46px);
   font-weight: 800; text-transform: uppercase; letter-spacing: -0.01em;
-  color: #fff; line-height: 1.1;
+  color: #fff; line-height: 1.15;
+  word-break: break-word; overflow-wrap: break-word;
 }
 .section-heading.centered { text-align: center; }
 .section-header { margin-bottom: 60px; }
@@ -764,12 +764,12 @@ button { cursor: none; font-family: var(--font-body); border: none; background: 
    ============================================= */
 .contact-section { padding-bottom: 140px; }
 .contact-card {
-  position: relative; overflow: hidden;
+  position: relative;
   background: var(--bg-card); backdrop-filter: blur(16px);
   border: 1px solid var(--border);
   border-radius: var(--radius-xl); padding: 64px 60px;
 }
-@media (max-width: 768px) { .contact-card { padding: 40px 24px; } }
+@media (max-width: 768px) { .contact-card { padding: 32px 20px; border-radius: 24px; } }
 
 .contact-glow-1 {
   position: absolute; top: -80px; right: -80px;
