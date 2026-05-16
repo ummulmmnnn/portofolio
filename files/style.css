@@ -845,10 +845,13 @@ button { cursor: none; font-family: var(--font-body); border: none; background: 
   display: flex; align-items: center; justify-content: center;
 }
 .contact-icon .material-symbols-outlined { font-size: 20px; color: var(--primary); }
-.contact-detail-item span {
+.contact-detail-item span,
+.contact-link {
   font-family: var(--font-mono); font-size: 11px;
   text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted);
+  transition: color var(--transition);
 }
+.contact-link:hover { color: var(--primary); }
 
 /* Form */
 .contact-form { display: flex; flex-direction: column; gap: 20px; }
